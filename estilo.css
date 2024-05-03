@@ -1,0 +1,32 @@
+.card {
+    width: fit-content;
+    border: 1px solid black;
+    border-radius: 5%;
+    padding: .5rem;
+    display: grid;
+    grid-template-columns: 10rem 20rem;
+    grid-template-areas: 
+    "a1 a2"
+    "a3 a3"
+    "a4 a4";
+}
+
+img{
+    grid-area: a1;
+    height: 8rem;
+    width: 8rem;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.titulo {
+    grid-area: a2;
+}
+
+.descri{
+    grid-area: a3;
+}
+
+.nasci{
+    grid-area: a4;
+}

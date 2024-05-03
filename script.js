@@ -24,3 +24,29 @@ console.log("Descrições \n ------------------------------------");
 for (const about of feminino){
     console.log(`Descrição de ${about.nome} - ${about.descricao}`);
 }
+
+
+const container = document.getElementById('container');
+
+
+let cards = "";
+
+
+feminino.forEach(
+    (jogadora) => {
+        cards += `
+        <div class='card'>
+            <img src=${jogadora.imagem}>
+            <div class='titulo'>
+                <p>${jogadora.posicao}</p>
+                <p>${jogadora.nome}</p>
+            </div>
+            <p class='descri'>${jogadora.descricao}</p>
+            <p class='nasci'>Nascimento: ${jogadora.nascimento}</p>
+        </div>
+    `;
+    }
+)
+
+
+container.innerHTML = cards;
