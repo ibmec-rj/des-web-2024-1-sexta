@@ -36,7 +36,7 @@ feminino.forEach(
     (jogadora) => {
         cards += `
         <div class='card'>
-            <img src=${jogadora.imagem}>
+            <img src=${jogadora.imagem} alt=${jogadora.nome}>
             <div class='titulo'>
                 <p>${jogadora.posicao}</p>
                 <p>${jogadora.nome}</p>
