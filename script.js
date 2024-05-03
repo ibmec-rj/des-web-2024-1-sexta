@@ -19,3 +19,8 @@ console.log("Posições \n ------------------------------------");
 for(let outroCount = 0; outroCount < feminino.length; outroCount++){
     console.log(`Posição de ${feminino[outroCount].nome} ${feminino[outroCount].posicao}`);
 }
+
+console.log("Descrições \n ------------------------------------");
+for (const about of feminino){
+    console.log(`Descrição de ${about.nome} - ${about.descricao}`);
+}
