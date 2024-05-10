@@ -1,3 +1,6 @@
+const url = "https://botafogo-atletas.mange.li";
+let lista_jogadoras;
+
 const container = document.createElement('container');
 container.style.display = 'flex';
 container.style.gap = '.5em';
@@ -81,15 +84,15 @@ const constroiCard = ( atleta ) => {
 }
 
 
-feminino.forEach(
+/*feminino.forEach(
     (jogadora) => {
         constroiCard(jogadora)
     }
-)
+)*/
 
 inputPesquisa.onchange = (e) => {
     const valor = e.target.value;
-    const resultado = feminino.filter(
+    const resultado = lista_jogadoras.filter(
         (elemento) => elemento.nome.toLowerCase().includes(valor.toLowerCase())
     )
 
@@ -101,3 +104,33 @@ inputPesquisa.onchange = (e) => {
         }
     )
 }
+
+container.innerHTML = `
+        <div style="align-text: center">
+            <img src='carregando.gif'>
+            <p>Carregando...</p>
+        <div>
+`;
+
+const pega_json = async (caminho) => {
+    const resposta = await fetch(caminho);
+    const dados = await resposta.json();
+    return dados;
+}
+
+pega_json(url).then( (r) => console.log(r) );
+
+
+pega_json(`${url}/all`).then(
+    (lista) => {
+        container.innerHTML = '';
+        lista_jogadoras = lista;
+        lista.forEach(
+            (jogadora) => {
+                constroiCard(jogadora)
+            }
+        )
+    }
+)
+
+console.log('síncrono');
