@@ -23,7 +23,9 @@ const handleClick = (e) => {
     for (const p in dados){
         document.cookie = `${p}=${dados[p]}`;
     }
-    window.location.href = 'outra.html';
+
+    localStorage.setItem('atleta', JSON.stringify(dados));
+    window.location.href = `outra.html?altura=${dados.altura}&elenco=${dados.elenco}`;
 }
 
 

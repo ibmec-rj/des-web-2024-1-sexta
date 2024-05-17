@@ -17,7 +17,7 @@ const constroiCard = ( atleta ) => {
     divCard.style.border = '2px solid black';
     //divCard.style.borderRadius = '5%';
     divCard.style.gridTemplateColumns = "10rem 20rem";
-    divCard.style.gridTemplateAreas = "'a1 a2' 'a3 a3' 'a4 a4'";
+    divCard.style.gridTemplateAreas = "'a1 a2' 'a3 a3' 'a4 a5'";
 
    
     const imagem = document.createElement('img');
@@ -65,6 +65,10 @@ const constroiCard = ( atleta ) => {
     pNasci.innerHTML = atleta.nascimento;
     pNasci.style.gridArea = 'a4';
 
+    const pExtra = document.createElement('p');
+    pExtra.innerHTML = `elenco: ${atleta.elenco} | altura: ${atleta.altura}`;
+    pExtra.style.gridArea = 'a5';
+
     divCard.appendChild(imagem);
     
     divCard.appendChild(titulo);
@@ -73,17 +77,28 @@ const constroiCard = ( atleta ) => {
 
     divCard.appendChild(pDescri);
     divCard.appendChild(pNasci);
+    divCard.appendChild(pExtra);
 
     document.body.appendChild(divCard);
 }
 
 //montar um objeto
 
+const parametros = new URLSearchParams(window.location.search);
+
+// com cookies
 const obj = {};
 obj.nome = acha_cookie('nome');
 obj.posicao = acha_cookie('posicao');
 obj.imagem = acha_cookie('imagem');
 obj.descricao = acha_cookie('descricao');
 obj.nascimento = acha_cookie('nascimento');
+
+// com localStorage
+const obj2 = JSON.parse(localStorage.getItem('atleta'));
+
+// enriquecendo com search params
+obj.elenco = parametros.get('elenco');
+obj.altura = parametros.get('altura');
 
 constroiCard(obj);
